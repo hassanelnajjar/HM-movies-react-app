@@ -5,4 +5,13 @@
   justify-content: flex-start;
   width: 960px;
   margin: 0 auto;
+  z-index: 1;
+}
+
+.Layout .main-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 600px;
 }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import LinkItem from '../LinkItem/index';
+import Backdrop from '../Backdrop/index';
 import './style.css';
 
-export default class index extends Component {
+export default class Headers extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,6 +30,7 @@ export default class index extends Component {
     return (
       <>
         <div className="Header">
+          {open && <Backdrop onClick={this.handleClick} />}
           <div className="Header-logo">
             <h1 className="Header-logo_text">HM</h1>
           </div>
@@ -46,28 +48,28 @@ export default class index extends Component {
               <i className="fas fa-angle-down" />
             </div>
             {open ? (
-              <div className="userprofile-menu">
+              <div className={`userprofile-menu ${open && 'fadeIn'}`}>
                 <ul className="user-nav-list">
                   <LinkItem
                     nameOfClass="item-link"
                     text="Profile"
                     iconsClass="fa-id-card"
                     to="profile"
-                    withIcon="true"
+                    withIcon
                   />
                   <LinkItem
                     nameOfClass="item-link"
                     text="Setting"
                     iconsClass="fa-cog"
                     to="setting"
-                    withIcon="true"
+                    withIcon
                   />
                   <LinkItem
                     nameOfClass="item-link"
                     text="Logout"
                     iconsClass="fa-sign-out-alt"
                     to="logout"
-                    withIcon="true"
+                    withIcon
                   />
                 </ul>
               </div>
