@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# HM Movies note :)  App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Please Visit the [Demo](https://dazzling-curie-ae5a66.netlify.app/)
 
-## Available Scripts
+### Team members:-
 
-In the project directory, you can run:
+- Mu'hammad Alabadsa
+- Hassan Alnajjar
 
-### `npm start`
+### Purpose
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This Website use to add your favorite movies and shows to watch their later.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### What You will Find :-
 
-### `npm test`
+You can find recommend movies and watched movies - you can add a movie for later by using the Add button - you will search using external api and you will get a list of movies with poster image - release year and name - you can choose it and add it to you recommend movie list.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This website is secure - you need to create a user and using it to login to the main page.
+You can search from the recommend movies - filter and also change the display of it
 
-### `npm run build`
+You can add your rating to movies - edit or remove it from the recommend movies and check it as a watched movie :)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Our journey to completion :-
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Work
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-Schema
+![Figma design showing the main pages in our website](https://www.figma.com/file/WDZJ1m2kkhnJI0uXyiopy4/Untitled?node-id=0%3A1)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Front End : React
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### User Journey
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- You will find a login page
+- You need to enter your email and password and you can register as a new user
+- You will view the main page which show the recommend movies
+- You can go to add a movie using the add movie page.
+- After search you should choose one of the list 
+- You can edit the info - description and rating
+- Then You will redirected to the home page
+- You can make filter - search - change display at recommend movies
+- You can also check the movie as watched and put your rating
+- You can view all the watched movies at the watched movie page.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Stretch Goals
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- making a responsive a Website.
+- add a database and let my friends connect to it to share our movies :)
+- Add Dark Theme :(
