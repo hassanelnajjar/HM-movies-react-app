@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LinkItem from '../LinkItem/index';
 import './style.css';
 
 export default class index extends Component {
@@ -47,18 +48,27 @@ export default class index extends Component {
             {open ? (
               <div className="userprofile-menu">
                 <ul className="user-nav-list">
-                  <li className="item-link">
-                    <i className="far fa-id-card" />
-                    <a href="/profile">Profile</a>
-                  </li>
-                  <li>
-                    <i className="fas fa-cog" />
-                    <a href="/Something">Setting</a>
-                  </li>
-                  <li>
-                    <i className="fas fa-sign-out-alt" />
-                    <a href="/logout">logout</a>
-                  </li>
+                  <LinkItem
+                    nameOfClass="item-link"
+                    text="Profile"
+                    iconsClass="fa-id-card"
+                    to="profile"
+                    withIcon="true"
+                  />
+                  <LinkItem
+                    nameOfClass="item-link"
+                    text="Setting"
+                    iconsClass="fa-cog"
+                    to="setting"
+                    withIcon="true"
+                  />
+                  <LinkItem
+                    nameOfClass="item-link"
+                    text="Logout"
+                    iconsClass="fa-sign-out-alt"
+                    to="logout"
+                    withIcon="true"
+                  />
                 </ul>
               </div>
             ) : null}
