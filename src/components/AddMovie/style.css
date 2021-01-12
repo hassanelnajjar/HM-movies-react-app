@@ -1,15 +1,16 @@
 .movie-form-container{
-  width: 80vw;
-  height: 100vh;
-  margin: auto;
+  width: 60vw;
+  height: 70vh;
+  margin: 3rem auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items:center
 }
 
 .add-movie-header{
   text-align: center;
+  margin: 1rem 0;
 }
 
 .movie-form{
@@ -24,6 +25,22 @@
   gap:20px;
 }
 
+.movie-list-container{
+  position: relative;
+}
+
+.add-movie-movies-list{
+  width: 75%;
+  position: absolute;
+  overflow: auto;
+  height: 50vh;
+  z-index: 10;
+  top:2rem;
+  left:25%;
+  background-color:rgb(242, 235, 235,0.8);
+  border-radius: 1rem;
+}
+
 
 .add-movie-input-row{
   display: flex;
@@ -34,8 +51,10 @@
 }
 
 .add-movie-input-row label{
-  width:30%;
+  width:25%;
   text-align: right;
+  white-space: nowrap;
+  
 }
 
 .add-movie-input-row label::after{
@@ -43,7 +62,7 @@
 }
 .add-movie-input-row textarea,
 .add-movie-input-row input{
-  width:60%;
+  width:70%;
   line-height: 1.5rem;
   outline: none;
   border:1px solid rgb(211, 208, 208);
@@ -54,15 +73,19 @@
 
 }
 
-
 .submit-button{
   border:none;
   padding: 0.5rem 2rem;
-  border-radius:0.2rem;
-  width:50%;
+  border-radius:0.3rem;
+  width:90%;
   position: relative;
-  left:80clpx;
   outline: none;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.submit-button:hover{
+  background-color:gray
 }
 
 .AddMovie-movie-item{
