@@ -1,5 +1,6 @@
-import React, { Component, createRef, Fragment } from 'react';
+import React, { Component, createRef } from 'react';
 import debounce from '../../utils/debounce';
+import MoviesList from '../MoviesList';
 import './style.css';
 
 export default class AddMovie extends Component {
@@ -11,6 +12,7 @@ export default class AddMovie extends Component {
       movies: [],
       rating: '',
       description: '',
+      showMovieList: false,
     };
     this.handleSearch = this.handleSearch.bind(this);
     this.handleDescription = this.handleDescription.bind(this);
@@ -24,7 +26,7 @@ export default class AddMovie extends Component {
   componentDidMount() {
     this.debounceFunc.current = debounce(
       () => this.handleRequest(this.state.name),
-      5000
+      1000
     );
   }
 
@@ -33,7 +35,9 @@ export default class AddMovie extends Component {
       `https://api.themoviedb.org/3/search/movie?api_key=304ac5e762f0abd7fc2c27e96bd42840&language=en-US&query=${value}`
     )
       .then((res) => res.json())
-      .then((movies) => this.setState({ movies: movies.results }))
+      .then((movies) =>
+        this.setState({ movies: movies.results, showMovieList: true })
+      )
       .catch((err) => console.log(err));
   }
 
@@ -79,11 +83,19 @@ export default class AddMovie extends Component {
       rating,
       description,
       name,
+      showMovieList: false,
     });
   }
 
   render() {
-    const { name, url, description, movies, rating } = this.state;
+    const {
+      name,
+      url,
+      description,
+      movies,
+      rating,
+      showMovieList,
+    } = this.state;
     return (
       <div className="movie-form-container">
         <h2 className="add-movie-header">Add New Movie</h2>
@@ -110,7 +122,7 @@ export default class AddMovie extends Component {
             <label htmlFor="movie-img-poster">Poster Image</label>
             <input
               type="text"
-              value={`https://image.tmdb.org/t/p/w500/${url}`}
+              value={url === '' ? '' : `https://image.tmdb.org/t/p/w500/${url}`}
               onChange={this.handleImageSrc}
             />
           </div>
@@ -124,35 +136,13 @@ export default class AddMovie extends Component {
             />
           </div>
         </form>
-        <Details movies={movies} handleChooseMovie={this.handleChooseMovie} />
+        {showMovieList ? (
+          <MoviesList
+            movies={movies}
+            handleChooseMovie={this.handleChooseMovie}
+          />
+        ) : null}
       </div>
     );
   }
-}
-
-function Details(props) {
-  const { movies, handleChooseMovie } = props;
-  return (
-    <details>
-      <ul>
-        {movies.map((movie) => (
-          <li
-            key={movie.id}
-            className="AddMovie-movie-item"
-            onClick={(e) => handleChooseMovie(movie.id, e)}
-          >
-            <p className="movie-original-title">{movie.original_title}</p>
-            <img
-              className="movie-thumbnail"
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-              alt="movie poster"
-            />
-            <span className="movie-release-year">
-              {new Date(movie.release_date).getFullYear()}
-            </span>
-          </li>
-        ))}
-      </ul>
-    </details>
-  );
 }

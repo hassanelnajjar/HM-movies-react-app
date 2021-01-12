@@ -1,0 +1,30 @@
+.AddMovie-movie-item{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.movie-original-title{
+  padding-left: 1rem;
+  width: 70%;
+  text-align: left;
+  list-style-type: none;
+}
+
+.movie-release-year{
+  width: 10%;
+}
+
+.movie-thumbnail{
+  height:100px;
+}
+
+.AddMovie-movie-item:hover{
+  background-color: rgb(128, 128, 128,0.10);
+}
+
