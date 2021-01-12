@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import PropTypes from 'prop-types';
-import Backdrop from '../../Backdrop/index';
-import './style.css';
+import Backdrop from "../../Backdrop/index";
+import "./style.css";
 
 class Filtering extends Component {
   constructor(props) {

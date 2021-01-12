@@ -1,80 +1,84 @@
-import React, { Component } from 'react';
-import Header from '../Headers/index';
-import MovieCard from '../MovieCard';
-import SideNav from '../SideNav/index';
-import Options from '../Options/index';
-import './style.css';
+import React, { Component } from "react";
+import { Route, Switch, Redirect } from "react-router-dom";
+import { getMovies, saveMovies, removeMovie } from "../../utils/localStorage";
+import Header from "../Headers/index";
+import MovieCard from "../MovieCard";
+import SideNav from "../SideNav";
+import Options from "../Options";
+import Login from "../Login";
+import SignUp from "../Signup";
+import "./style.css";
 
 export default class Layout extends Component {
   constructor(props) {
     super(props);
     this.state = {
       show: true,
+      movies: getMovies(),
     };
   }
 
-  render() {
-    const { show } = this.state;
-    const testingdata = {
-      styleType: 'style1',
-      title: 'Toy Story',
-      description:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis earum,temporibus doloribus autem tenetur quidem? Beatae.',
-      imgUrl: 'https://via.placeholder.com/150',
-      imgTitle: 'Toy Story Image',
-      likes: 1542563,
-      watched: 15422,
-      released: '12/5/1995',
-    };
-    const {
-      styleType,
-      title,
-      description,
-      imgUrl,
-      imgTitle,
-      likes,
-      watched,
-      released,
-    } = testingdata;
+  componentDidMount() {
+    this.setState({ movies: getMovies() });
+  }
 
+  handleDeleteMovie = (movieId) => {
+    const movies = removeMovie(movieId);
+    this.setState({ movies });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const {
+      target: [
+        { value: title },
+        { value: description },
+        { value: imgUrl },
+        { values: likes },
+      ],
+    } = event;
+    const movies = saveMovies({ title, description, imgUrl, likes });
+    this.setState({ movies });
+  };
+
+  render() {
+    const { show, movies } = this.state;
     return (
       <div className="Layout">
         <Header />
         <div className="main-content">
           <SideNav />
-          <div className="MovieContainer">
-            <Options />
-            <MovieCard
-              styleType="style2"
-              imgUrl={imgUrl}
-              watched={watched}
-              title={title}
-              description={description}
-              imgTitle={imgTitle}
-              likes={likes}
-              released={released}
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route
+              exact
+              path="/movies"
+              render={(props) => {
+                return (
+                  <div className="MovieContainer">
+                    <Options handleSubmit={this.handleSubmit} />
+                    {movies.map((movie) => (
+                      <MovieCard
+                        handleDeleteMovie={this.handleDeleteMovie}
+                        movieId={movie.movieId}
+                        styleType="style2"
+                        imgUrl={movie.imgUrl}
+                        watched={movie.watched}
+                        title={movie.title}
+                        description={movie.description}
+                        imgTitle={movie.imgTitle}
+                        likes={movie.likes}
+                        released={movie.released}
+                        {...props}
+                      />
+                    ))}
+                  </div>
+                );
+              }}
             />
-            <MovieCard
-              styleType={styleType}
-              imgUrl={imgUrl}
-              watched={watched}
-              title={title}
-              description={description}
-              imgTitle={imgTitle}
-              likes={likes}
-              released={released}
-            />
-            <MovieCard
-              styleType="style1"
-              imgUrl={imgUrl}
-              watched={watched}
-              title={title}
-              description={description}
-              imgTitle={imgTitle}
-              likes={likes}
-              released={released}
-            />
-          </div>
+            <Redirect to="/movies" />
+          </Switch>
         </div>
         <div>{show}</div>
       </div>

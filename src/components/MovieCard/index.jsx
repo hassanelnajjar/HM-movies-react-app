@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-import Backdrop from '../Backdrop/index';
-import './style.css';
+import React from "react";
+import PropTypes from "prop-types";
+import Backdrop from "../Backdrop/index";
+import "./style.css";
 
 class MovieCard extends React.Component {
   constructor(props) {
@@ -16,7 +15,8 @@ class MovieCard extends React.Component {
 
   handleClick() {
     this.setState((prevState) => {
-      return { open: !prevState.open };
+      const { open } = prevState;
+      return { open: !open };
     });
   }
 
@@ -26,10 +26,16 @@ class MovieCard extends React.Component {
     });
   }
 
+  handleRemoveButtonKeyDown = (movieId) => {
+    const { handleDeleteMovie } = this.props;
+    return handleDeleteMovie(movieId);
+  };
+
   render() {
     const { open } = this.state;
     const {
       styleType,
+      movieId,
       imgUrl,
       imgTitle,
       title,
@@ -37,17 +43,18 @@ class MovieCard extends React.Component {
       likes,
       watched,
       released,
+      handleDeleteMovie,
     } = this.props;
     return (
       <div className="MovieCard">
         {open && <Backdrop onClick={this.handleClick} />}
         <div
           className={`${
-            styleType === 'style1' ? 'card-header' : 'card-header-style2'
+            styleType === "style1" ? "card-header" : "card-header-style2"
           }`}
         >
           <img src={imgUrl} alt={imgTitle} role="presentation" />
-          {styleType === 'style2' && (
+          {styleType === "style2" && (
             <div className="card-footer-style2">
               <div className="title">
                 <h2>{title}</h2>
@@ -71,7 +78,16 @@ class MovieCard extends React.Component {
                         <i className="far fa-check-circle" />
                       </li>
                       <li>
-                        <i className="fas fa-trash" />
+                        <i
+                          role="button"
+                          aria-label="remove-movie"
+                          tabIndex={0}
+                          onKeyDown={() =>
+                            this.handleRemoveButtonKeyDown(movieId)
+                          }
+                          className="fas fa-trash"
+                          onClick={() => handleDeleteMovie(movieId)}
+                        />
                       </li>
                     </ul>
                   </div>
@@ -80,7 +96,7 @@ class MovieCard extends React.Component {
             </div>
           )}
         </div>
-        {styleType === 'style1' && (
+        {styleType === "style1" && (
           <div className="card-main-content">
             <div className="card-main-content__title">
               <h2>{title}</h2>
@@ -90,7 +106,7 @@ class MovieCard extends React.Component {
             </div>
           </div>
         )}
-        {styleType === 'style1' && (
+        {styleType === "style1" && (
           <div className="card-footer">
             <div className="card-footer__content">
               <i className="fas fa-star" />
@@ -112,25 +128,16 @@ class MovieCard extends React.Component {
 }
 
 MovieCard.propTypes = {
-  styleType: PropTypes.string,
-  imgUrl: PropTypes.string,
-  imgTitle: PropTypes.string,
-  title: PropTypes.string,
-  description: PropTypes.string,
-  watched: PropTypes.number,
-  likes: PropTypes.number,
-  released: PropTypes.string,
-};
-
-MovieCard.defaultProps = {
-  styleType: 'style1',
-  imgUrl: 'https://via.placeholder.com/150',
-  imgTitle: 'movie poster',
-  title: 'Movie Title',
-  description: '',
-  watched: 0,
-  likes: 0,
-  released: '20/2/2020',
+  styleType: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string.isRequired,
+  imgTitle: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  watched: PropTypes.number.isRequired,
+  likes: PropTypes.number.isRequired,
+  released: PropTypes.string.isRequired,
+  movieId: PropTypes.string.isRequired,
+  handleDeleteMovie: PropTypes.func.isRequired,
 };
 
 export default MovieCard;

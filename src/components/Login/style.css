@@ -1,90 +1,87 @@
-.login-form-container{
+.login-form-container {
   width: 60vw;
   height: 70vh;
   margin: 3rem auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items:center
+  align-items: center;
 }
 
-.add-user-header{
+.add-user-header {
   text-align: center;
   margin: 1rem 0;
 }
 
-.login-form{
+.login-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
-  border:1px solid gainsboro;
+  align-items: center;
+  border: 1px solid gainsboro;
   padding: 2rem;
   border-radius: 1rem;
   width: 100%;
-  gap:20px;
+  gap: 20px;
 }
 
-.add-user-input-row{
+.add-user-input-row {
   display: flex;
   flex-direction: row;
   width: 90%;
   justify-content: space-evenly;
-  align-items:center
+  align-items: center;
 }
 
-.add-user-input-row label{
-  width:25%;
+.add-user-input-row label {
+  width: 25%;
   text-align: right;
   white-space: nowrap;
-  
 }
 
-.add-user-input-row label::after{
-  content:":"
+.add-user-input-row label::after {
+  content: ":";
 }
 
-.add-user-input-row-show-password{
+.add-user-input-row-show-password {
   width: 40%;
 }
-.add-user-input-row-show-password input{
-  margin-right:1rem ;
+.add-user-input-row-show-password input {
+  margin-right: 1rem;
 }
 
-.add-user-input-row input{
-  width:70%;
+.add-user-input-row input {
+  padding: 0.5rem 1rem;
+  width: 70%;
   line-height: 1.5rem;
   outline: none;
-  border:1px solid rgb(211, 208, 208);
-  border-radius:0.20rem;
+  border: 1px solid rgb(211, 208, 208);
+  border-radius: 0.2rem;
 }
 
-.add-user-input-row-forget-password{
+.add-user-input-row-forget-password {
   display: flex;
   flex-direction: row;
   width: 40%;
   justify-content: flex-start;
-  align-items:flex-start
-
+  align-items: flex-start;
 }
 
-
-.submit-login-button{
-  border:none;
+.submit-login-button {
+  border: none;
   padding: 0.5rem 2rem;
-  border-radius:0.3rem;
-  width:90%;
+  border-radius: 0.3rem;
+  width: 90%;
   position: relative;
   outline: none;
   transition: all 0.5s;
   cursor: pointer;
 }
 
-.submit-login-button:hover{
-  background-color:gray
+.submit-login-button:hover {
+  background-color: gray;
 }
 
-
-.login-error{
+.login-error {
   color: red;
 }

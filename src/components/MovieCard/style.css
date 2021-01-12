@@ -14,12 +14,12 @@
 
 .MovieCard .card-header {
   width: 100%;
-  height: 200px;
+  height: auto;
 }
 
 .MovieCard .card-header img {
+  max-height: 100%;
   width: 100%;
-  height: 200px;
 }
 
 .MovieCard .card-main-content {
@@ -36,7 +36,7 @@
   margin-top: 10px;
   color: #353535;
   font-size: 36px;
-  font-family: 'Mountains of Christmas', cursive;
+  font-family: "Mountains of Christmas", cursive;
 }
 
 .MovieCard .card-main-content .card-main-content__description p {
@@ -102,18 +102,22 @@
 /* Style 2 */
 
 .MovieCard .card-header-style2 {
-  height: 100%;
+  height: 500px;
   width: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-self: center;
+  position: relative;
 }
 
 .MovieCard .card-header-style2 img {
-  width: auto;
-  height: 100%;
+  position: absolute;
+  top: 0;
+  left: -10%;
+  max-height: 100%;
+  z-index: -5;
 }
 
 .MovieCard .card-header-style2 .card-footer-style2 {
@@ -123,9 +127,11 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
   border-bottom: 1px solid #c7c7c7;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 1px solid #c7c7c7;
+  border-bottom-right-radius: 1px solid #c7c7c7;
+  position: relative;
 }
 
 .MovieCard .card-header-style2 .card-footer-style2 .title {
@@ -157,50 +163,97 @@
   transition: all 0.25s;
 }
 
-.MovieCard .card-header-style2 .card-footer-style2 .card-menu:hover i.fa-ellipsis-v {
+.MovieCard
+  .card-header-style2
+  .card-footer-style2
+  .card-menu:hover
+  i.fa-ellipsis-v {
   color: #555555;
   transition: all 0.25s;
 }
 
 .MovieCard .card-header-style2 .card-footer-style2 .card-menu .card-menu_list {
   position: absolute;
-  bottom: -35px;
-  right: -10px;
-  border: 1px solid #c7c7c7;
+  top: 0;
+  left: 0;
+  border: 0.5px solid rgb(248, 244, 244);
+  border-right: 0px;
   padding: 5px;
-  width: 150px;
-  background-color: #ffffff;
+  width: 90%;
+  height: 100%;
+  background-color: rgb(248, 244, 244);
+  z-index: 2000;
   animation: fadeIn 0.5s;
   animation-fill-mode: forwards;
 }
 
-.MovieCard .card-header-style2 .card-footer-style2 .card-menu .card-menu_list ul {
+.MovieCard
+  .card-header-style2
+  .card-footer-style2
+  .card-menu
+  .card-menu_list
+  ul {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
   margin: 0px;
   padding: 0px;
+  height: 100%;
 }
 
-.MovieCard .card-header-style2 .card-footer-style2 .card-menu .card-menu_list ul li {
+.MovieCard
+  .card-header-style2
+  .card-footer-style2
+  .card-menu
+  .card-menu_list
+  ul
+  li {
   display: inline-block;
   list-style: none;
 }
 
-.MovieCard .card-header-style2 .card-footer-style2 .card-menu .card-menu_list ul li i {
+.MovieCard
+  .card-header-style2
+  .card-footer-style2
+  .card-menu
+  .card-menu_list
+  ul
+  li
+  i {
   font-size: 22px;
 }
 
-.MovieCard .card-header-style2 .card-footer-style2 .card-menu .card-menu_list ul li:hover:first-child i {
+.MovieCard
+  .card-header-style2
+  .card-footer-style2
+  .card-menu
+  .card-menu_list
+  ul
+  li:hover:first-child
+  i {
   color: rgb(0, 104, 240);
 }
 
-.MovieCard .card-header-style2 .card-footer-style2 .card-menu .card-menu_list ul li:hover:nth-child(2) i {
+.MovieCard
+  .card-header-style2
+  .card-footer-style2
+  .card-menu
+  .card-menu_list
+  ul
+  li:hover:nth-child(2)
+  i {
   color: rgb(10, 191, 0);
 }
 
-.MovieCard .card-header-style2 .card-footer-style2 .card-menu .card-menu_list ul li:hover:last-child i {
+.MovieCard
+  .card-header-style2
+  .card-footer-style2
+  .card-menu
+  .card-menu_list
+  ul
+  li:hover:last-child
+  i {
   color: rgb(201, 0, 44);
 }
 
@@ -214,4 +267,3 @@
     right: -10px;
   }
 }
-

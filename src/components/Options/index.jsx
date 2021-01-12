@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import Sorting from './Sorting/index';
-import Search from './Search/index';
-import AddMovie from '../AddMovie/index';
-import Filtering from './Filtering/index';
-import Backdrop from '../Backdrop';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import Sorting from "./Sorting/index";
+import Search from "./Search/index";
+import AddMovie from "../AddMovie/index";
+import Filtering from "./Filtering/index";
+import Backdrop from "../Backdrop";
 
-import './style.css';
+import "./style.css";
 
-export default class Options extends Component {
+class Options extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,6 +32,7 @@ export default class Options extends Component {
 
   render() {
     const { open } = this.state;
+    const { handleSubmit } = this.props;
     return (
       <div className="Options">
         {open && <Backdrop showForm onClick={this.handleClick} />}
@@ -43,7 +45,7 @@ export default class Options extends Component {
             aria-label="menu"
             onKeyDown={this.handleKeyDown}
           />
-          {open && <AddMovie />}
+          {open && <AddMovie handleSubmit={handleSubmit} />}
         </div>
         <div className="filter-section">
           <Search />
@@ -54,3 +56,8 @@ export default class Options extends Component {
     );
   }
 }
+Options.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};
+
+export default Options;

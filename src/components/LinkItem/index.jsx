@@ -1,7 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
-import './style.css';
+import "./style.css";
 
 function LinkItem(props) {
   const { nameOfClass, text, iconsClass, to, withIcon } = props;
@@ -9,7 +10,7 @@ function LinkItem(props) {
     <>
       <li className={nameOfClass}>
         {withIcon && <i className={`fas ${iconsClass}`} />}
-        <a href={`/${to}`}>{text}</a>
+        <Link to={`/${to}`}>{text}</Link>
       </li>
     </>
   );
@@ -24,10 +25,10 @@ LinkItem.propTypes = {
 };
 
 LinkItem.defaultProps = {
-  nameOfClass: 'item-link',
-  text: 'Home',
-  iconsClass: 'fa-id-card',
-  to: 'home',
+  nameOfClass: "item-link",
+  text: "Home",
+  iconsClass: "fa-id-card",
+  to: "home",
   withIcon: true,
 };
 
