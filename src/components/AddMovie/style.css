@@ -1,11 +1,17 @@
 .movie-form-container{
+  position: absolute;
   width: 60vw;
   height: 70vh;
   margin: 3rem auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items:center
+  align-items:center;
+  background-color: #ffffff;
+  padding: 2rem;
+  border: 1px solid #c7c7c7;
+  border-radius: 5px;
+  z-index: 10000;
 }
 
 .add-movie-header{
