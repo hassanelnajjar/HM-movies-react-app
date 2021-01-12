@@ -1,0 +1,30 @@
+.Options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  padding: 1rem;
+}
+
+.filter-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addmovie-section .fa-plus-square {
+  font-size: 22px;
+  color: #757575;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.addmovie-section .fa-plus-square:hover {
+  font-size: 22px;
+  color: #00e83a;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.25s;
+}

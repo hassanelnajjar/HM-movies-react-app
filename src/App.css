@@ -5,6 +5,7 @@
 }
 .App {
   box-sizing: border-box;
+  position: relative;
 }
 
 .App-logo {
