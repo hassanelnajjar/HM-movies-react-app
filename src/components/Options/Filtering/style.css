@@ -1,0 +1,63 @@
+.Filtering{
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  padding-right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #757575;
+  position: relative;
+}
+
+.Filtering .fa-filter {
+  color: inherit;
+  cursor: pointer;
+  font-size: 22px;
+  outline: none;
+  transition: all 0.25s;
+}
+
+.Filtering .fa-filter:hover {
+  color: #ae00e8;
+  transition: all 0.25s;
+}
+
+.Filtering .card-menu_list {
+  position: absolute;
+  top: 40px;
+  left: -100px;
+  width: 150px;
+  border: 1px solid #c7c7c7;
+  border-radius: 2px;
+  background-color: #ffffff;
+  z-index: 1000;
+  animation: fadeIn 0.5s;
+  animation-fill-mode: forwards;
+}
+
+.Filtering .card-menu_list ul {
+  list-style: none;
+}
+
+.Filtering .card-menu_list ul li {
+  padding: 5px 10px;
+  border-bottom: 1px solid #c7c7c7;
+  cursor: pointer;
+}
+
+.Filtering .card-menu_list ul li:hover {
+  background-color: #f0f0f0;
+  transition: all 0.25s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    top: 20px;
+  }
+  100% {
+    opacity: 1;
+    right: -10px;
+  }
+}

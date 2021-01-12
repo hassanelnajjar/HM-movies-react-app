@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../Headers/index';
-import MovieCard from '../MoviCard';
+import MovieCard from '../MovieCard';
 import SideNav from '../SideNav/index';
+import Options from '../Options/index';
 import './style.css';
 
 export default class Layout extends Component {
@@ -42,6 +43,7 @@ export default class Layout extends Component {
         <div className="main-content">
           <SideNav />
           <div className="MovieContainer">
+            <Options />
             <MovieCard
               styleType="style2"
               imgUrl={imgUrl}

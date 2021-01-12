@@ -1,3 +1,4 @@
+import AddMovie from './components/AddMovie';
 import Layout from './components/Layout/index';
 import './App.css';
 
@@ -5,6 +6,7 @@ function App() {
   return (
     <div className="App">
       <Layout />
+      <AddMovie />
     </div>
   );
 }
