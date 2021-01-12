@@ -3,6 +3,7 @@ import Sorting from './Sorting/index';
 import Search from './Search/index';
 import AddMovie from '../AddMovie/index';
 import Filtering from './Filtering/index';
+import Backdrop from '../Backdrop';
 
 import './style.css';
 
@@ -32,6 +33,7 @@ export default class Options extends Component {
     const { open } = this.state;
     return (
       <div className="Options">
+        {open && <Backdrop showForm onClick={this.handleClick} />}
         <div className="addmovie-section">
           <i
             className="far fa-plus-square"

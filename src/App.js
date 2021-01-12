@@ -1,5 +1,5 @@
 import AddMovie from './components/AddMovie';
-import Layout from './components/Layout/index';
+import Layout from './components/Layout';
 import './App.css';
 
 function App() {

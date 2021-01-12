@@ -100,7 +100,7 @@ export default class AddMovie extends Component {
       <div className="movie-form-container">
         <h2 className="add-movie-header">Add New Movie</h2>
         <form className="movie-form">
-          <div className="add-movie-input-row">
+          <div className="add-movie-input-row movie-list-container">
             <label htmlFor="movie-title">Title</label>
             <input
               type="text"
@@ -108,6 +108,14 @@ export default class AddMovie extends Component {
               onChange={this.handleSearch}
               id="movie-title"
             />
+            {showMovieList ? (
+              <div className='add-movie-movies-list'>
+                <MoviesList
+                  movies={movies}
+                  handleChooseMovie={this.handleChooseMovie}
+                />
+              </div>
+            ) : null}
           </div>
           <div className="add-movie-input-row">
             <label htmlFor="movie-description">Description</label>
@@ -135,13 +143,8 @@ export default class AddMovie extends Component {
               id="movie-rating"
             />
           </div>
+          <input className="submit-button" type="submit" value="Submit" />
         </form>
-        {showMovieList ? (
-          <MoviesList
-            movies={movies}
-            handleChooseMovie={this.handleChooseMovie}
-          />
-        ) : null}
       </div>
     );
   }
