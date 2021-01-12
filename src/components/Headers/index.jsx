@@ -39,7 +39,7 @@ export default class Headers extends Component {
               className="menu-btn"
               onClick={this.handleClick}
               role="button"
-              tabIndex="0"
+              tabIndex={0}
               onKeyDown={this.handleKeyDown}
             >
               <span className="username-text">username</span>
