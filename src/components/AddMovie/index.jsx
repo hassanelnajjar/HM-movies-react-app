@@ -135,6 +135,7 @@ export default class AddMovie extends Component {
               id="movie-rating"
             />
           </div>
+          <input className="submit-button" type="button" value="Submit" />
         </form>
         {showMovieList ? (
           <MoviesList

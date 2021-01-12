@@ -1,9 +1,10 @@
 .movie-form-container{
-  width: 100vw;
+  width: 80vw;
   height: 100vh;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items:center
 }
 
@@ -11,10 +12,59 @@
   text-align: center;
 }
 
+.movie-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  border:1px solid gainsboro;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+  gap:20px;
+}
+
+
 .add-movie-input-row{
   display: flex;
   flex-direction: row;
+  width: 90%;
+  justify-content: space-evenly;
+  align-items:center
 }
+
+.add-movie-input-row label{
+  width:30%;
+  text-align: right;
+}
+
+.add-movie-input-row label::after{
+  content:":"
+}
+.add-movie-input-row textarea,
+.add-movie-input-row input{
+  width:60%;
+  line-height: 1.5rem;
+  outline: none;
+  border:1px solid rgb(211, 208, 208);
+  border-radius:0.20rem;
+}
+.add-movie-input-row textarea{
+  resize: vertical;
+
+}
+
+
+.submit-button{
+  border:none;
+  padding: 0.5rem 2rem;
+  border-radius:0.2rem;
+  width:50%;
+  position: relative;
+  left:80clpx;
+  outline: none;
+}
+
 .AddMovie-movie-item{
   display: flex;
   flex-direction: row;
@@ -43,11 +93,4 @@
 
 .AddMovie-movie-item:hover{
   background-color: rgb(128, 128, 128,0.10);
-}
-
-.movie-form{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items:center;
 }
