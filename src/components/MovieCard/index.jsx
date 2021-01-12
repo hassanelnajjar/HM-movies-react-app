@@ -34,110 +34,103 @@ class MovieCard extends React.Component {
   render() {
     const { open } = this.state;
     const {
-      styleType,
-      movieId,
-      imgUrl,
-      imgTitle,
-      title,
-      description,
-      likes,
-      watched,
-      released,
-      handleDeleteMovie,
-    } = this.props;
+			styleType,
+			movie: {
+				movieId,
+				imgUrl,
+				imgTitle,
+				title,
+				description,
+				likes,
+				watched,
+				released,
+			},
+			methods:{handleWatchedMovies,handleDeleteMovie}
+
+		} = this.props;
     return (
-      <div className="MovieCard">
-        {open && <Backdrop onClick={this.handleClick} />}
-        <div
-          className={`${
-            styleType === "style1" ? "card-header" : "card-header-style2"
-          }`}
-        >
-          <img src={imgUrl} alt={imgTitle} role="presentation" />
-          {styleType === "style2" && (
-            <div className="card-footer-style2">
-              <div className="title">
-                <h2>{title}</h2>
-              </div>
-              <div className="card-menu">
-                <i
-                  className="fas fa-ellipsis-v"
-                  onClick={this.handleClick}
-                  role="button"
-                  tabIndex={0}
-                  aria-label="menu"
-                  onKeyDown={this.handleKeyDown}
-                />
-                {open && (
-                  <div className="card-menu_list">
-                    <ul>
-                      <li>
-                        <i className="fas fa-edit" />
-                      </li>
-                      <li>
-                        <i className="far fa-check-circle" />
-                      </li>
-                      <li>
-                        <i
-                          role="button"
-                          aria-label="remove-movie"
-                          tabIndex={0}
-                          onKeyDown={() =>
-                            this.handleRemoveButtonKeyDown(movieId)
-                          }
-                          className="fas fa-trash"
-                          onClick={() => handleDeleteMovie(movieId)}
-                        />
-                      </li>
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </div>
-          )}
-        </div>
-        {styleType === "style1" && (
-          <div className="card-main-content">
-            <div className="card-main-content__title">
-              <h2>{title}</h2>
-            </div>
-            <div className="card-main-content__description">
-              <p>{description}</p>
-            </div>
-          </div>
-        )}
-        {styleType === "style1" && (
-          <div className="card-footer">
-            <div className="card-footer__content">
-              <i className="fas fa-star" />
-              <p className="starts">{likes}</p>
-            </div>
-            <div className="card-footer__content">
-              <i className="fas fa-eye" />
-              <p className="starts">{watched}</p>
-            </div>
-            <div className="card-footer__content">
-              <i className="fas fa-calendar-alt" />
-              <p className="starts">{released}</p>
-            </div>
-          </div>
-        )}
-      </div>
-    );
+			<div className='MovieCard'>
+				{open && <Backdrop onClick={this.handleClick} />}
+				<div
+					className={`${
+						styleType === 'style1' ? 'card-header' : 'card-header-style2'
+					}`}
+				>
+					<img src={imgUrl} alt={imgTitle} role='presentation' />
+					{styleType === 'style2' && (
+						<div className='card-footer-style2'>
+							<div className='title'>
+								<h2>{title}</h2>
+							</div>
+							<div className='card-menu'>
+								<i
+									className='fas fa-ellipsis-v'
+									onClick={this.handleClick}
+									role='button'
+									tabIndex={0}
+									aria-label='menu'
+									onKeyDown={this.handleKeyDown}
+								/>
+								{open && (
+									<div className='card-menu_list'>
+										<ul>
+											<li>
+												<i className='fas fa-edit' />
+											</li>
+											<li>
+												<button className="check-button" type="button" onClick={() => {console.log(movieId);return handleWatchedMovies(movieId)}}>
+													<i className='far fa-check-circle' />
+												</button>
+											</li>
+											<li>
+												<i
+													role='button'
+													aria-label='remove-movie'
+													tabIndex={0}
+													onKeyDown={() =>
+														this.handleRemoveButtonKeyDown(movieId)
+													}
+													className='fas fa-trash'
+													onClick={() => handleDeleteMovie(movieId)}
+												/>
+											</li>
+										</ul>
+									</div>
+								)}
+							</div>
+						</div>
+					)}
+				</div>
+				{styleType === 'style1' && (
+					<div className='card-main-content'>
+						<div className='card-main-content__title'>
+							<h2>{title}</h2>
+						</div>
+						<div className='card-main-content__description'>
+							<p>{description}</p>
+						</div>
+					</div>
+				)}
+				{styleType === 'style1' && (
+					<div className='card-footer'>
+						<div className='card-footer__content'>
+							<i className='fas fa-star' />
+							<p className='starts'>{likes}</p>
+						</div>
+						<div className='card-footer__content'>
+							<i className='fas fa-eye' />
+							<p className='starts'>{watched}</p>
+						</div>
+						<div className='card-footer__content'>
+							<i className='fas fa-calendar-alt' />
+							<p className='starts'>{released}</p>
+						</div>
+					</div>
+				)}
+			</div>
+		);
   }
 }
 
-MovieCard.propTypes = {
-  styleType: PropTypes.string.isRequired,
-  imgUrl: PropTypes.string.isRequired,
-  imgTitle: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  watched: PropTypes.number.isRequired,
-  likes: PropTypes.number.isRequired,
-  released: PropTypes.string.isRequired,
-  movieId: PropTypes.string.isRequired,
-  handleDeleteMovie: PropTypes.func.isRequired,
-};
 
 export default MovieCard;

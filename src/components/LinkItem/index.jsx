@@ -17,19 +17,10 @@ function LinkItem(props) {
 }
 
 LinkItem.propTypes = {
-  nameOfClass: PropTypes.string,
-  text: PropTypes.string,
-  iconsClass: PropTypes.string,
-  to: PropTypes.string,
-  withIcon: PropTypes.bool,
+  nameOfClass: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  iconsClass: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+  withIcon: PropTypes.bool.isRequired,
 };
-
-LinkItem.defaultProps = {
-  nameOfClass: "item-link",
-  text: "Home",
-  iconsClass: "fa-id-card",
-  to: "home",
-  withIcon: true,
-};
-
 export default LinkItem;

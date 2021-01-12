@@ -24,6 +24,18 @@ export const removeMovie = (id) => {
   return remainingMovies;
 };
 
+export const watchedMovies = (id) => {
+  const movies = getMovies();
+  const currentMovie = movies.filter((movie) => movie.movieId === id)[0];
+  const remainingMovies = movies.filter((movie) => movie.movieId !== id);
+  currentMovie.watched = true;
+  localStorage.setItem(
+    "movies",
+    JSON.stringify([currentMovie, ...remainingMovies])
+  );
+  return [currentMovie, ...remainingMovies];
+};
+
 export const saveMovies = ({
   imgUrl,
   imgTitle = null,

@@ -120,6 +120,12 @@
   z-index: -5;
 }
 
+.check-button{
+  border:none;
+  background-color:transparent;
+  cursor: pointer;
+}
+
 .MovieCard .card-header-style2 .card-footer-style2 {
   height: 60px;
   width: 100%;

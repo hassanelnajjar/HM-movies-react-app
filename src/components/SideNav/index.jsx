@@ -10,12 +10,6 @@ export default function SidNav() {
           <LinkItem
             nameOfClass="item-link"
             withIcon={false}
-            text="Home"
-            to="recommended"
-          />
-          <LinkItem
-            nameOfClass="item-link"
-            withIcon={false}
             text="Recommended"
             to="movies"
           />
