@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './style.css'
 export default class SignUp extends Component {
 	state = {
 		username: '',
@@ -51,9 +52,10 @@ export default class SignUp extends Component {
 	render() {
     const {confirmPassword,email,password,username} = this.state
 		return (
-			<>
-				<form onSubmit={this.handleSubmit}>
-					<div>
+			<div className="signup-form-container">
+				<h2 className="add-user-header">Create New User</h2>
+				<form onSubmit={this.handleSubmit} className="signup-form">
+					<div className="add-movie-input-row">
 						<label htmlFor='username'>User Name</label>
 						<input
 							type='text'
@@ -63,7 +65,7 @@ export default class SignUp extends Component {
 							placeholder='Enter Your user name...'
 						/>
 					</div>
-					<div>
+					<div className="add-movie-input-row">
 						<label htmlFor='Email'>Email</label>
 						<input
 							type='email'
@@ -73,7 +75,7 @@ export default class SignUp extends Component {
               onChange={this.handleEmail}
 						/>
 					</div>
-					<div>
+					<div className="add-movie-input-row">
 						<label htmlFor='Email'>Password</label>
 						<input
 							type='Password'
@@ -83,7 +85,7 @@ export default class SignUp extends Component {
               onChange={this.handlePassword}
 						/>
 					</div>
-					<div>
+					<div className="add-movie-input-row">
 						<label htmlFor='Email'>Confirm Password</label>
 						<input
 							type='Password'
@@ -94,9 +96,9 @@ export default class SignUp extends Component {
 						/>
 					</div>
 					{/* <p>Are You Registered ?... <Link>Login Here !!</Link></p> */}
-					<input type='submit' value='Register' />
+					<input className="submit-signup-button" type='submit' value='Register' />
 				</form>
-			</>
+			</div>
 		);
 	}
 }
