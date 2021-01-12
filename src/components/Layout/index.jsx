@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Header from '../Headers/index';
+import SideNav from '../SideNav/index';
 import './style.css';
 
-export default class index extends Component {
+export default class Layout extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,6 +16,9 @@ export default class index extends Component {
     return (
       <div className="Layout">
         <Header />
+        <div className="main-content">
+          <SideNav />
+        </div>
         <div>{show}</div>
       </div>
     );
