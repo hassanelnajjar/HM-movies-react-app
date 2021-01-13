@@ -14,6 +14,7 @@ export const getMovies = () => {
       released: 2017,
     },
   ];
+  localStorage.setItem('movies', JSON.stringify(savedUsers));
   return savedUsers;
 };
 
@@ -59,3 +60,19 @@ export const saveMovies = ({
   localStorage.setItem("movies", JSON.stringify(movies));
   return movies;
 };
+
+export const registerUser = (usernanme) => {
+	localStorage.setItem('usernanme', usernanme);
+	return localStorage.setItem('isAuth', true);
+};
+export const unRegisterUser = ()=>{
+  return localStorage.setItem('isAuth',false)
+}
+
+export const isAuthUser = () => {
+	return JSON.parse(localStorage.getItem('isAuth')) || false;
+};
+
+export const getUserName = ()=>{
+  return localStorage.getItem('usernanme');
+}
