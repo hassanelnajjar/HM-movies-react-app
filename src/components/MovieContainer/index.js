@@ -11,6 +11,7 @@ function MovieContainer(props) {
       handleDeleteMovie,
       addSortCase,
       addFilterCase,
+      addSearchText,
     },
     showWatchedMovies,
     movies,
@@ -22,6 +23,7 @@ function MovieContainer(props) {
         handleSubmit={handleSubmit}
         addSortCase={addSortCase}
         addFilterCase={addFilterCase}
+        addSearchText={addSearchText}
       />
       {movies
         .filter(({ watched }) => (showWatchedMovies ? watched : !watched))
@@ -49,6 +51,7 @@ MovieContainer.propTypes = {
     handleDeleteMovie: PropTypes.func.isRequired,
     addSortCase: PropTypes.func.isRequired,
     addFilterCase: PropTypes.func.isRequired,
+    addSearchText: PropTypes.func.isRequired,
   }).isRequired,
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
   showWatchedMovies: PropTypes.bool.isRequired,
