@@ -8,7 +8,7 @@ function MoviesList(props) {
   return (
     <>
       <ul>
-        {movies.map((movie) => (
+        {movies ? movies.map((movie) => (
           <li
             tabIndex="0"
             role="button"
@@ -28,7 +28,7 @@ function MoviesList(props) {
               {new Date(movie.release_date).getFullYear()}
             </span>
           </li>
-        ))}
+        )) : null}
       </ul>
     </>
   );

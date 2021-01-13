@@ -11,6 +11,7 @@ class MovieCard extends React.Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleRemoveButtonKeyDown = this.handleRemoveButtonKeyDown.bind(this);
   }
 
   handleClick() {
@@ -26,10 +27,12 @@ class MovieCard extends React.Component {
     });
   }
 
-  handleRemoveButtonKeyDown = (movieId) => {
-    const { handleDeleteMovie } = this.props;
+  handleRemoveButtonKeyDown(movieId) {
+    const {
+      methods: { handleDeleteMovie },
+    } = this.props;
     return handleDeleteMovie(movieId);
-  };
+  }
 
   render() {
     const { open } = this.state;
@@ -81,7 +84,6 @@ class MovieCard extends React.Component {
                           className="check-button"
                           type="button"
                           onClick={() => {
-                            console.log(movieId);
                             return handleWatchedMovies(movieId);
                           }}
                         >
@@ -94,8 +96,7 @@ class MovieCard extends React.Component {
                           aria-label="remove-movie"
                           tabIndex={0}
                           onKeyDown={() =>
-                            this.handleRemoveButtonKeyDown(movieId)
-                          }
+                            this.handleRemoveButtonKeyDown(movieId)}
                           className="fas fa-trash"
                           onClick={() => handleDeleteMovie(movieId)}
                         />
@@ -137,5 +138,23 @@ class MovieCard extends React.Component {
     );
   }
 }
+
+MovieCard.propTypes = {
+  styleType: PropTypes.string.isRequired,
+  methods: PropTypes.shape({
+    handleWatchedMovies: PropTypes.func.isRequired,
+    handleDeleteMovie: PropTypes.func.isRequired,
+  }).isRequired,
+  movie: PropTypes.shape({
+    movieId: PropTypes.string.isRequired,
+    imgUrl: PropTypes.string.isRequired,
+    imgTitle: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    likes: PropTypes.number.isRequired,
+    watched: PropTypes.number.isRequired,
+    released: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default MovieCard;

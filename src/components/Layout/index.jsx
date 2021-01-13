@@ -6,7 +6,7 @@ import {
   removeMovie,
   watchedMovies,
 } from "../../utils/localStorage";
-import Header from "../Headers/index";
+import Header from "../Headers";
 import About from "../About";
 import Contact from "../Contact";
 import MovieContainer from "../MovieContainer";
@@ -23,23 +23,28 @@ export default class Layout extends Component {
       show: true,
       movies: getMovies(),
     };
+    this.handleDeleteMovie = this.handleDeleteMovie.bind(this);
+    this.handleWatchedMovies = this.handleWatchedMovies.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.addSortCase = this.addSortCase.bind(this);
+    this.addFilterCase = this.addFilterCase.bind(this);
   }
 
   componentDidMount() {
     this.setState({ movies: getMovies() });
   }
 
-  handleDeleteMovie = (movieId) => {
+  handleDeleteMovie(movieId) {
     const movies = removeMovie(movieId);
     this.setState({ movies });
   };
 
-  handleWatchedMovies = (movieId) => {
+  handleWatchedMovies (movieId) {
     const movies = watchedMovies(movieId);
     this.setState({ movies });
   };
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     event.preventDefault();
     const {
       target: [
@@ -53,8 +58,43 @@ export default class Layout extends Component {
     this.setState({ movies });
   };
 
+  addSortCase(sortBy) {
+    const { movies } = this.state;
+    switch (sortBy) {
+      case "alphabetical-ascending":
+        this.setState({movies: movies.sort((a, b) => {
+          if (a.title < b.title) {
+            return -1;
+          }
+          if (a.title > b.title) {
+            return 1;
+          }
+          return 0;
+        })});
+        break;
+      case "alphabetical-dscending":
+        this.setState({movies: movies.sort((a, b) => {
+          if (a.title < b.title) {
+            return 1;
+          }
+          if (a.title > b.title) {
+            return -1;
+          }
+          return 0;
+        })});
+        break;
+      default:
+        this.setState({ movies });
+        break;
+    }
+  };
+
+  addFilterCase() {
+    this.setState({movies: []});
+  };
+
   render() {
-    const { show, movies, showWatchedMovies } = this.state;
+    const { show, movies } = this.state;
     return (
       <div className="Layout">
         <Header />
@@ -76,7 +116,6 @@ export default class Layout extends Component {
                 showWatchedMovies: true,
                 styleType: "style1",
               },
-              ,
             ].map((el) => (
               <Route
                 exact
@@ -91,6 +130,8 @@ export default class Layout extends Component {
                         handleWatchedMovies: this.handleWatchedMovies,
                         handleSubmit: this.handleSubmit,
                         handleDeleteMovie: this.handleDeleteMovie,
+                        addSortCase: this.addSortCase,
+                        addFilterCase: this.addFilterCase,
                       }}
                       {...props}
                     />

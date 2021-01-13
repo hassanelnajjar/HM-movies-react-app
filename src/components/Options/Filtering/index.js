@@ -3,16 +3,16 @@ import PropTypes from "prop-types";
 import Backdrop from "../../Backdrop/index";
 import "./style.css";
 
-class Sorting extends Component {
+class Filtering extends Component {
   constructor(props) {
     super(props);
     this.state = {
       open: false,
-      sortBy: "alphabetical-ascending",
+      filterby: "recommended",
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleSortType = this.handleSortType.bind(this);
+    this.handleFilterType = this.handleFilterType.bind(this);
   }
 
   handleClick() {
@@ -27,15 +27,15 @@ class Sorting extends Component {
     });
   }
 
-  handleSortType(evt) {
+  handleFilterType(evt) {
     this.setState(
       (prevState) => {
-        return { open: !prevState.open, sortBy: evt.target.dataset.sortby };
+        return { open: !prevState.open, filterby: evt.target.dataset.filterby };
       },
       () => {
-        const { getSortType } = this.props;
-        const { sortBy } = this.state;
-        getSortType(sortBy);
+        const { getFilterType } = this.props;
+        const { filterby } = this.state;
+        getFilterType(filterby);
       }
     );
   }
@@ -43,10 +43,10 @@ class Sorting extends Component {
   render() {
     const { open } = this.state;
     return (
-      <div className="Sorting">
+      <div className="Filtering">
         {open && <Backdrop onClick={this.handleClick} />}
         <i
-          className="fas fa-sort-alpha-up"
+          className="fas fa-filter"
           onClick={this.handleClick}
           role="button"
           tabIndex={0}
@@ -57,24 +57,24 @@ class Sorting extends Component {
           <div className="card-menu_list">
             <ul>
               <li
-                onClick={(this.handleClick, this.handleSortType)}
+                onClick={(this.handleClick, this.handleFilterType)}
                 role="button"
-                data-sortby="alphabetical-ascending"
+                data-filterby="recommended"
                 tabIndex={0}
-                aria-label="Sort By Alphabetical-ascending"
+                aria-label="Filter By Recommended"
                 onKeyDown={this.handleKeyDown}
               >
-                Sort By Alphabetical Ascending
+                Filter By Recommended
               </li>
               <li
-                onClick={(this.handleClick, this.handleSortType)}
+                onClick={(this.handleClick, this.handleFilterType)}
                 role="button"
+                data-filterby="watching"
                 tabIndex={0}
-                data-sortby="alphabetical-dscending"
-                aria-label="Sort By Alphabetical Dscending"
+                aria-label="Filter By Watching"
                 onKeyDown={this.handleKeyDown}
               >
-                Sort By Alphabetical Dscending
+                Filter By Watching
               </li>
             </ul>
           </div>
@@ -84,8 +84,8 @@ class Sorting extends Component {
   }
 }
 
-Sorting.propTypes = {
-  getSortType: PropTypes.func.isRequired,
+Filtering.propTypes = {
+  getFilterType: PropTypes.func.isRequired,
 };
 
-export default Sorting;
+export default Filtering;

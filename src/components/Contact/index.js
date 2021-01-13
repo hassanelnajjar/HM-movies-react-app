@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import "./style.css";
 
-export default function Contact(props) {
+function Contact(props) {
   const {
     history: { push },
   } = props;
@@ -36,3 +37,11 @@ export default function Contact(props) {
     </div>
   );
 }
+
+Contact.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
+}
+
+export default Contact;

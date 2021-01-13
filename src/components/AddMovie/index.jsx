@@ -38,7 +38,7 @@ class AddMovie extends Component {
     )
       .then((res) => res.json())
       .then((movies) =>
-        this.setState({ movies: movies.results, showMovieList: true })
+        this.setState({ movies: movies.results, showMovieList: !!movies.results })
       )
       .catch(() => this.setState({ movies: [] }));
   }
@@ -90,7 +90,7 @@ class AddMovie extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, handleHideAddMovie } = this.props;
 
     const {
       name,
@@ -103,7 +103,13 @@ class AddMovie extends Component {
     return (
       <div className="movie-form-container showContainer">
         <h2 className="add-movie-header">Add New Movie</h2>
-        <form className="movie-form" onSubmit={handleSubmit}>
+        <form
+          className="movie-form"
+          onSubmit={(e) => {
+           handleHideAddMovie();
+           return handleSubmit(e);
+          }}
+        >
           <div className="add-movie-input-row movie-list-container">
             <label htmlFor="movie-title">Title</label>
             <input
@@ -156,6 +162,7 @@ class AddMovie extends Component {
 
 AddMovie.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
+  handleHideAddMovie: PropTypes.func.isRequired,
 };
 
 export default withRouter(AddMovie);

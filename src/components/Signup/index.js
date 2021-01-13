@@ -4,15 +4,23 @@ import PropTypes from "prop-types";
 import "./style.css";
 
 class SignUp extends Component {
-  state = {
-    username: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-    errors: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      errors: "",
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUsername = this.handleUsername.bind(this);
+    this.handleEmail = this.handleEmail.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
+    this.handleConfirmPassword = this.handleConfirmPassword.bind(this);
+  }
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     event.preventDefault();
     const {
       history: { push },
@@ -54,28 +62,28 @@ class SignUp extends Component {
     return push("/login");
   };
 
-  handleUsername = (event) => {
+  handleUsername(event) {
     const {
       target: { value },
     } = event;
     this.setState({ username: value });
   };
 
-  handleEmail = (event) => {
+  handleEmail(event) {
     const {
       target: { value },
     } = event;
     this.setState({ email: value });
   };
 
-  handlePassword = (event) => {
+  handlePassword(event) {
     const {
       target: { value },
     } = event;
     this.setState({ password: value });
   };
 
-  handleConfirmPassword = (event) => {
+  handleConfirmPassword(event) {
     const {
       target: { value },
     } = event;
@@ -142,6 +150,12 @@ class SignUp extends Component {
       </div>
     );
   }
+}
+
+SignUp.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
 }
 
 export default SignUp;

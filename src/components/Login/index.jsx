@@ -5,14 +5,20 @@ import PropTypes from "prop-types";
 import "./style.css";
 
 class Login extends Component {
-  state = {
-    email: "",
-    password: "",
-    showPassword: false,
-    errors: false,
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+      showPassword: false,
+      errors: false,
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePassword = this.handlePassword.bind(this);
+    this.handleShowPassword = this.handleShowPassword.bind(this);
+  }
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     event.preventDefault();
     const {
       history: { push },
@@ -31,14 +37,14 @@ class Login extends Component {
     return this.setState({ errors: true });
   };
 
-  handlePassword = (event) => {
+  handlePassword(event) {
     const {
       target: { value },
     } = event;
     this.setState({ password: value });
   };
 
-  handleShowPassword = () => {
+  handleShowPassword() {
     this.setState((prevState) => ({ showPassword: !prevState.showPassword }));
   };
 
@@ -82,7 +88,8 @@ class Login extends Component {
             <Link to="/">Forget Password !!</Link>
           </div>
           <p>
-            Do You Have an account?...{" "}
+            Do You Have an account?...
+            {" "}
             <Link to="/signup">Register Here !!</Link>
           </p>
           {errors ? (
@@ -97,6 +104,11 @@ class Login extends Component {
       </div>
     );
   }
+}
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
 }
 
 export default withRouter(Login);
