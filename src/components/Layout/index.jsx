@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../Headers/index';
-import MovieCard from '../MovieCard';
+import MovieCard from '../MovieCard/index';
 import SideNav from '../SideNav/index';
 import Options from '../Options/index';
 import './style.css';
