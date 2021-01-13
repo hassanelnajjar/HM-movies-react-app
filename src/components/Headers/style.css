@@ -81,11 +81,18 @@
   color: #df00ba;
 }
 
-.userprofile-menu .user-nav-list li:hover:last-child {
+
+.userprofile-menu .user-nav-list li button{
+  font-size: 18px;
+  text-align: left;
+  font-weight: 200;
+}
+.userprofile-menu .user-nav-list li button:hover {
   padding-right: 8px;
   color: #df0043;
 }
 
+.userprofile-menu .user-nav-list li button,
 .userprofile-menu .user-nav-list li a {
   text-decoration: none;
   color: #757575;

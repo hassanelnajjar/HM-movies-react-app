@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from "prop-types";
+import { registerUser, isAuthUser } from '../../utils/localStorage';
 import "./style.css";
 
 class SignUp extends Component {
@@ -23,8 +24,10 @@ class SignUp extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const {
-      history: { push },
-    } = this.props;
+      handleAuthentication,
+			history: { push },
+
+		} = this.props;
     const {
       target: [
         { value: username },
@@ -33,12 +36,11 @@ class SignUp extends Component {
         { value: confirmPassword },
       ],
     } = event;
-
     if (
-      username.trim() ||
-      email.trim() ||
-      password.trim() ||
-      confirmPassword.trim()
+      !username.trim() &&
+      !email.trim() &&
+      !password.trim() &&
+      !confirmPassword.trim()
     ) {
       return this.setState({ errors: "You have to fill all fields .." });
     }
@@ -58,7 +60,8 @@ class SignUp extends Component {
     ];
 
     localStorage.setItem("users", JSON.stringify(users));
-
+    registerUser();
+    handleAuthentication()
     return push("/login");
   };
 
@@ -153,9 +156,26 @@ class SignUp extends Component {
 }
 
 SignUp.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }).isRequired,
+	history: PropTypes.shape({
+		push: PropTypes.func.isRequired,
+	}).isRequired,
+	handleAuthentication: PropTypes.func.isRequired,
+};
+
+
+function HighOrderSignUp(props) {
+
+	const isAuth = isAuthUser();
+	const { isAuthenticated, handleAuthentication } = props;
+	if (!isAuth && !isAuthenticated) {
+		return <SignUp handleAuthentication={handleAuthentication} {...props} />;
+	}
+	return <Redirect to='/movies' />;
 }
 
-export default SignUp;
+HighOrderSignUp.propTypes = {
+	isAuthenticated: PropTypes.bool.isRequired,
+	handleAuthentication: PropTypes.func.isRequired,
+};
+
+export default HighOrderSignUp;

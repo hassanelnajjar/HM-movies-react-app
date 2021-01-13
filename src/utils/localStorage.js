@@ -59,3 +59,14 @@ export const saveMovies = ({
   localStorage.setItem("movies", JSON.stringify(movies));
   return movies;
 };
+
+export const registerUser = ()=>{
+  return localStorage.setItem('isAuth',true)
+}
+export const unRegisterUser = ()=>{
+  return localStorage.setItem('isAuth',false)
+}
+
+export const isAuthUser = () => {
+	return JSON.parse(localStorage.getItem('isAuth')) || false;
+};

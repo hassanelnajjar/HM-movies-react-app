@@ -9,6 +9,7 @@
     "airbnb",
     "plugin:prettier/recommended"
   ],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -25,6 +26,8 @@
     "jsx-a11y/label-has-associated-control": "off",
     "jsx-a11y/no-noninteractive-element-to-interactive-role": "off",
     "react/react-in-jsx-scope": "off",
+    "max-classes-per-file":0,
+    "no-nested-ternary":0,
     "react/jsx-filename-extension": [
       1,
       {

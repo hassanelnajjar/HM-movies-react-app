@@ -1,0 +1,36 @@
+.home-container{
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.home-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center;
+  width: 50%;
+  margin-top: 5rem;
+}
+
+.home-login-button,.home-signup-button{
+  padding: 0.5rem 2rem;
+  border:none;
+  outline: none;
+  background-color: rgb(223, 215, 215,0.5);
+  border-radius: 0.20rem;
+}
+
+.home-login-button:hover,.home-signup-button:hover{
+  background-color: rgb(223, 215, 215);
+}
+
+.home-button-link{
+  text-decoration: none;
+  color:black;
+  font-weight: 500;
+}
