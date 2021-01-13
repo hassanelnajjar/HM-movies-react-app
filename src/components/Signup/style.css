@@ -61,6 +61,8 @@
   outline: none;
   transition: all 0.5s;
   cursor: pointer;
+  font-weight: 800;
+  font-size: 20px;
 }
 
 .submit-signup-button:hover {
