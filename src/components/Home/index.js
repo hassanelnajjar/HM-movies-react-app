@@ -6,16 +6,12 @@ export default function Home(){
     <div className='home-container'>
       <h1 className='home-header'>Welcome To Your Movies Watch list</h1>
       <div className='home-buttons'>
-        <button className='home-login-button' type='button'>
-          <Link className='home-button-link' to='/login'>
-            Login
-          </Link>
-        </button>
-        <button className='home-signup-button' type='button'>
-          <Link className='home-button-link' to='/signup'>
-            Signup
-          </Link>
-        </button>
+        <Link className='home-login-button home-button-link' to='/login'>
+          Login
+        </Link>
+        <Link className='home-login-button home-button-link' to='/signup'>
+          Signup
+        </Link>
       </div>
     </div>
 	);

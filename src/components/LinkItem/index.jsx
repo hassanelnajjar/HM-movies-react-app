@@ -5,10 +5,16 @@ import { Link } from "react-router-dom";
 import "./style.css";
 
 function LinkItem(props) {
-  const { nameOfClass, text, iconsClass, to, withIcon } = props;
+  const { nameOfClass, text, iconsClass, to, withIcon, handleShowHide } = props;
   return (
     <>
-      <li className={nameOfClass}>
+      <li
+        role='button'
+        tab-tabIndex='0'
+        onKeyDown={() => handleShowHide()}
+        className={nameOfClass}
+        onClick={handleShowHide}
+      >
         {withIcon && <i className={`fas ${iconsClass}`} />}
         <Link to={`/${to}`}>{text}</Link>
       </li>
@@ -22,9 +28,11 @@ LinkItem.propTypes = {
 	iconsClass: PropTypes.string,
 	to: PropTypes.string.isRequired,
 	withIcon: PropTypes.bool.isRequired,
+	handleShowHide:PropTypes.func
 };
 
 LinkItem.defaultProps = {
 	iconsClass: '',
+	handleShowHide:()=>{}
 };
 export default LinkItem;
