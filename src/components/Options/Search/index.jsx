@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import "./style.css";
 
 class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: "",
+      searchText: "",
       showSearchInput: false,
     };
     this.handleShow = this.handleShow.bind(this);
@@ -27,11 +27,15 @@ class Search extends Component {
   }
 
   handleChange(evt) {
-    this.setState({ search: evt.target.value });
+    const { getSearchText } = this.props;
+    this.setState({ searchText: evt.target.value }, () => {
+      const { searchText } = this.state;
+      getSearchText(searchText);
+    });
   }
 
   render() {
-    const { search, showSearchInput } = this.state;
+    const { searchText, showSearchInput } = this.state;
     return (
       <div className="Search">
         <form
@@ -43,7 +47,7 @@ class Search extends Component {
             type="search"
             placeholder="Search movies"
             name="search"
-            value={search}
+            value={searchText}
             onChange={this.handleChange}
           />
         </form>
@@ -58,6 +62,10 @@ class Search extends Component {
       </div>
     );
   }
+}
+
+Search.propTypes = {
+  getSearchText: PropTypes.func.isRequired,
 }
 
 export default Search;

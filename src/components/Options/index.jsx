@@ -19,6 +19,7 @@ class Options extends Component {
     this.addSortCase = this.addSortCase.bind(this);
     this.addFilterCase = this.addFilterCase.bind(this);
     this.handleHideAddMovie = this.handleHideAddMovie.bind(this);
+    this.getSearchText = this.getSearchText.bind(this);
   }
 
   handleClick() {
@@ -30,12 +31,17 @@ class Options extends Component {
   handleHideAddMovie() {
     this.setState({ open: false});
   }
-
+  
   handleKeyDown() {
     this.setState((prevState) => {
       return { open: !prevState.open };
     });
   }
+  
+    getSearchText(searchText) {
+      const { addSearchText } = this.props;
+      addSearchText(searchText);
+    }
   
   addFilterCase(sortBy) {
     const { addFilterCase: _addFilterCase } = this.props;
@@ -65,7 +71,7 @@ class Options extends Component {
           {open && <AddMovie handleHideAddMovie={this.handleHideAddMovie} handleSubmit={handleSubmit} />}
         </div>
         <div className="filter-section">
-          <Search />
+          <Search getSearchText={this.getSearchText} />
           <Filtering getFilterType={this.addFilterCase} />
           <Sorting getSortType={this.addSortCase} />
         </div>
@@ -77,6 +83,7 @@ Options.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   addFilterCase: PropTypes.func.isRequired,
   addSortCase: PropTypes.func.isRequired,
+  addSearchText: PropTypes.func.isRequired,
 };
 
 export default Options;

@@ -14,6 +14,7 @@ export default class Headers extends Component {
   }
 
   handleClick() {
+    console.log("Dfdfdfd");
     this.setState((prevState) => {
       return { open: !prevState.open };
     });
@@ -27,6 +28,7 @@ export default class Headers extends Component {
 
   render() {
     const { open } = this.state;
+    console.log(open);
     return (
       <>
         <div className="Header">
@@ -48,7 +50,7 @@ export default class Headers extends Component {
               <i className="fas fa-angle-down" />
             </div>
             {open ? (
-              <div className={`userprofile-menu ${open && "fadeIn"}`}>
+              <div className="userprofile-menu">
                 <ul className="user-nav-list">
                   <LinkItem
                     nameOfClass="item-link"

@@ -28,6 +28,7 @@ export default class Layout extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addSortCase = this.addSortCase.bind(this);
     this.addFilterCase = this.addFilterCase.bind(this);
+    this.addSearchText = this.addSearchText.bind(this);
   }
 
   componentDidMount() {
@@ -93,6 +94,12 @@ export default class Layout extends Component {
     this.setState({movies: []});
   };
 
+  addSearchText(searchText) {
+    const moviesArr = getMovies();
+    const moviesSearched = moviesArr.filter(item => item.title.toLowerCase().includes(searchText.toLowerCase()));;
+    this.setState({movies: moviesSearched});
+  }
+
   render() {
     const { show, movies } = this.state;
     return (
@@ -132,6 +139,7 @@ export default class Layout extends Component {
                         handleDeleteMovie: this.handleDeleteMovie,
                         addSortCase: this.addSortCase,
                         addFilterCase: this.addFilterCase,
+                        addSearchText: this.addSearchText,
                       }}
                       {...props}
                     />
