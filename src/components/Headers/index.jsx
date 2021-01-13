@@ -28,7 +28,6 @@ class Headers extends Component {
 
   render() {
     const { open } = this.state;
-    const { handleLogout } = this.props;
     return (
       <>
         <div className='Header'>
@@ -72,7 +71,6 @@ class Headers extends Component {
                     iconsClass='fa-sign-out-alt'
                     to='logout'
                     withIcon
-                    handleLogout={handleLogout}
                   />
                 </ul>
               </div>
@@ -84,8 +82,5 @@ class Headers extends Component {
   }
 }
 
-Headers.propTypes = {
-	handleLogout:PropTypes.func.isRequired
-};
 
 export default Headers;

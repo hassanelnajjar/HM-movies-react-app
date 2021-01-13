@@ -17,6 +17,8 @@ import SideNav from "../SideNav";
 import Home from '../Home'
 import Login from "../Login";
 import SignUp from "../Signup";
+import Logout from '../Logout';
+
 import "./style.css";
 
 class Layout extends Component {
@@ -73,7 +75,6 @@ class Layout extends Component {
 		unRegisterUser();
 		this.setState({ isAuthenticated: false });
 		return push('/');
-		
 	}
 
 	addSortCase(sortBy) {
@@ -126,6 +127,11 @@ class Layout extends Component {
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/contact' component={Contact} />
+        <Route
+          exact
+          path='/logout'
+          render={(props) => <Logout handleLogout={this.handleLogout} {...props} />}
+        />
         <Route
           exact
           path='/login'
