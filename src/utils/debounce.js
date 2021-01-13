@@ -4,6 +4,7 @@ export default function debounce(func, wait, immediate) {
   return function executedFunction() {
     const context = this;
     const args = arguments;
+    console.log(args);
 
     const later = function () {
       timeout = null;

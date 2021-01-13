@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import LinkItem from '../LinkItem/index';
-import Backdrop from '../Backdrop/index';
-import './style.css';
+import React, { Component } from "react";
+import LinkItem from "../LinkItem/index";
+import Backdrop from "../Backdrop/index";
+import "./style.css";
 
 export default class Headers extends Component {
   constructor(props) {
@@ -48,7 +48,7 @@ export default class Headers extends Component {
               <i className="fas fa-angle-down" />
             </div>
             {open ? (
-              <div className={`userprofile-menu ${open && 'fadeIn'}`}>
+              <div className={`userprofile-menu ${open && "fadeIn"}`}>
                 <ul className="user-nav-list">
                   <LinkItem
                     nameOfClass="item-link"

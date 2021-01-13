@@ -1,4 +1,4 @@
-.login-form-container {
+.contact-form-container {
   width: 60vw;
   height: 70vh;
   margin: 3rem auto;
@@ -8,24 +8,24 @@
   align-items: center;
 }
 
-.add-user-header {
+.contact-header {
   text-align: center;
   margin: 1rem 0;
 }
 
-.login-form {
+.contact-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid gainsboro;
+  border: none;
   padding: 2rem;
   border-radius: 1rem;
   width: 100%;
   gap: 20px;
 }
 
-.add-user-input-row {
+.input-row {
   display: flex;
   flex-direction: row;
   width: 90%;
@@ -33,24 +33,17 @@
   align-items: center;
 }
 
-.add-user-input-row label {
+.input-row label {
   width: 25%;
   text-align: right;
   white-space: nowrap;
 }
 
-.add-user-input-row label::after {
+.input-row label::after {
   content: ":";
 }
-
-.add-user-input-row-show-password {
-  width: 40%;
-}
-.add-user-input-row-show-password input {
-  margin-right: 1rem;
-}
-
-.add-user-input-row input {
+.input-row textarea,
+.input-row input {
   padding: 0.5rem 1rem;
   width: 70%;
   line-height: 1.5rem;
@@ -59,15 +52,11 @@
   border-radius: 0.2rem;
 }
 
-.add-user-input-row-forget-password {
-  display: flex;
-  flex-direction: row;
-  width: 40%;
-  justify-content: flex-start;
-  align-items: flex-start;
+.input-row textarea {
+  resize: none;
 }
 
-.submit-login-button {
+.submit-contact-button {
   border: none;
   padding: 0.5rem 2rem;
   border-radius: 0.3rem;
@@ -78,10 +67,10 @@
   cursor: pointer;
 }
 
-.submit-login-button:hover {
+.submit-contact-button:hover {
   background-color: gray;
 }
 
-.login-error {
+.contact-error {
   color: red;
 }

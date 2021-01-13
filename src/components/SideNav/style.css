@@ -33,7 +33,7 @@
 }
 
 .SideNav .SideNav-nav .SideNav-nav-list .item-link::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 23px;
   width: 0;
@@ -52,7 +52,7 @@
 }
 
 .SideNav .SideNav-nav .SideNav-nav-list .item-link:hover::before {
-  content: '';
+  content: "";
   width: 70%;
   height: 3px;
   display: inline-block;
@@ -66,4 +66,3 @@
   font-weight: 600;
   transition: all 0.25s;
 }
-

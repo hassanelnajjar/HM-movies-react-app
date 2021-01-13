@@ -1,17 +1,19 @@
-import React, { Component, createRef } from 'react';
-import debounce from '../../utils/debounce';
-import MoviesList from '../MoviesList';
-import './style.css';
+import React, { Component, createRef } from "react";
+import { withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import debounce from "../../utils/debounce";
+import MoviesList from "../MoviesList";
+import "./style.css";
 
-export default class AddMovie extends Component {
+class AddMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      url: '',
+      name: "",
+      url: "",
       movies: [],
-      rating: '',
-      description: '',
+      rating: "",
+      description: "",
       showMovieList: false,
     };
     this.handleSearch = this.handleSearch.bind(this);
@@ -24,10 +26,10 @@ export default class AddMovie extends Component {
   }
 
   componentDidMount() {
-    this.debounceFunc.current = debounce(
-      () => this.handleRequest(this.state.name),
-      1000
-    );
+    this.debounceFunc.current = debounce(() => {
+      const { name } = this.state;
+      return this.handleRequest(name);
+    }, 1000);
   }
 
   handleRequest(value) {
@@ -38,7 +40,7 @@ export default class AddMovie extends Component {
       .then((movies) =>
         this.setState({ movies: movies.results, showMovieList: true })
       )
-      .catch((err) => console.log(err));
+      .catch(() => this.setState({ movies: [] }));
   }
 
   handleSearch(event) {
@@ -46,7 +48,7 @@ export default class AddMovie extends Component {
       target: { value },
     } = event;
     this.setState({ name: value });
-    this.debounceFunc.current(value);
+    this.debounceFunc.current();
   }
 
   handleDescription(event) {
@@ -88,6 +90,8 @@ export default class AddMovie extends Component {
   }
 
   render() {
+    const { handleSubmit } = this.props;
+
     const {
       name,
       url,
@@ -97,9 +101,9 @@ export default class AddMovie extends Component {
       showMovieList,
     } = this.state;
     return (
-      <div className="movie-form-container">
+      <div className="movie-form-container showContainer">
         <h2 className="add-movie-header">Add New Movie</h2>
-        <form className="movie-form">
+        <form className="movie-form" onSubmit={handleSubmit}>
           <div className="add-movie-input-row movie-list-container">
             <label htmlFor="movie-title">Title</label>
             <input
@@ -109,7 +113,7 @@ export default class AddMovie extends Component {
               id="movie-title"
             />
             {showMovieList ? (
-              <div className='add-movie-movies-list'>
+              <div className="add-movie-movies-list">
                 <MoviesList
                   movies={movies}
                   handleChooseMovie={this.handleChooseMovie}
@@ -130,7 +134,7 @@ export default class AddMovie extends Component {
             <label htmlFor="movie-img-poster">Poster Image</label>
             <input
               type="text"
-              value={url === '' ? '' : `https://image.tmdb.org/t/p/w500/${url}`}
+              value={url === "" ? "" : `https://image.tmdb.org/t/p/w500/${url}`}
               onChange={this.handleImageSrc}
             />
           </div>
@@ -149,3 +153,9 @@ export default class AddMovie extends Component {
     );
   }
 }
+
+AddMovie.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};
+
+export default withRouter(AddMovie);

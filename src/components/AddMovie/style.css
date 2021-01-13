@@ -1,4 +1,4 @@
-.movie-form-container{
+.movie-form-container {
   position: absolute;
   width: 60vw;
   height: 70vh;
@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items:center;
+  align-items: center;
   background-color: #ffffff;
   padding: 2rem;
   border: 1px solid #c7c7c7;
@@ -14,87 +14,84 @@
   z-index: 10000;
 }
 
-.add-movie-header{
+.add-movie-header {
   text-align: center;
   margin: 1rem 0;
 }
 
-.movie-form{
+.movie-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
-  border:1px solid gainsboro;
+  align-items: center;
+  border: 1px solid gainsboro;
   padding: 2rem;
   border-radius: 1rem;
   width: 100%;
-  gap:20px;
+  gap: 20px;
 }
 
-.movie-list-container{
+.movie-list-container {
   position: relative;
 }
 
-.add-movie-movies-list{
+.add-movie-movies-list {
   width: 75%;
   position: absolute;
   overflow: auto;
   height: 50vh;
   z-index: 10;
-  top:2rem;
-  left:25%;
-  background-color:rgb(242, 235, 235,0.8);
+  top: 2rem;
+  left: 25%;
+  background-color: rgb(242, 235, 235, 0.8);
   border-radius: 1rem;
 }
 
-
-.add-movie-input-row{
+.add-movie-input-row {
   display: flex;
   flex-direction: row;
   width: 90%;
   justify-content: space-evenly;
-  align-items:center
+  align-items: center;
 }
 
-.add-movie-input-row label{
-  width:25%;
+.add-movie-input-row label {
+  width: 25%;
   text-align: right;
   white-space: nowrap;
-  
 }
 
-.add-movie-input-row label::after{
-  content:":"
+.add-movie-input-row label::after {
+  content: ":";
 }
 .add-movie-input-row textarea,
-.add-movie-input-row input{
-  width:70%;
+.add-movie-input-row input {
+  width: 70%;
   line-height: 1.5rem;
   outline: none;
-  border:1px solid rgb(211, 208, 208);
-  border-radius:0.20rem;
+  border: 1px solid rgb(211, 208, 208);
+  border-radius: 0.2rem;
 }
-.add-movie-input-row textarea{
+.add-movie-input-row textarea {
   resize: vertical;
-
 }
 
-.submit-button{
-  border:none;
+.submit-button {
+  border: none;
   padding: 0.5rem 2rem;
-  border-radius:0.3rem;
-  width:90%;
+  border-radius: 0.3rem;
+  width: 90%;
   position: relative;
   outline: none;
   transition: all 0.5s;
   cursor: pointer;
 }
 
-.submit-button:hover{
-  background-color:gray
+.submit-button:hover {
+  background-color: gray;
 }
 
-.AddMovie-movie-item{
+.AddMovie-movie-item {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -105,21 +102,21 @@
   margin-bottom: 1rem;
 }
 
-.movie-original-title{
+.movie-original-title {
   padding-left: 1rem;
   width: 70%;
   text-align: left;
   list-style-type: none;
 }
 
-.movie-release-year{
+.movie-release-year {
   width: 10%;
 }
 
-.movie-thumbnail{
-  height:100px;
+.movie-thumbnail {
+  height: 100px;
 }
 
-.AddMovie-movie-item:hover{
-  background-color: rgb(128, 128, 128,0.10);
+.AddMovie-movie-item:hover {
+  background-color: rgb(128, 128, 128, 0.1);
 }
