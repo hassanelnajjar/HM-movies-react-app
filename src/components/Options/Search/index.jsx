@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 // import PropTypes from 'prop-types';
-import './style.css';
+import "./style.css";
 
 class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: '',
+      search: "",
       showSearchInput: false,
     };
     this.handleShow = this.handleShow.bind(this);
@@ -36,7 +36,7 @@ class Search extends Component {
       <div className="Search">
         <form
           className={`search-form ${
-            showSearchInput ? 'show-search-input' : 'hidden-search-input'
+            showSearchInput ? "show-search-input" : "hidden-search-input"
           }`}
         >
           <input

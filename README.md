@@ -1,4 +1,4 @@
-# HM Movies note :)  App
+# HM Movies note :) App
 
 Please Visit the [Demo](https://dazzling-curie-ae5a66.netlify.app/)
 
@@ -25,8 +25,7 @@ You can add your rating to movies - edit or remove it from the recommend movies 
 #### Work
 
 -Schema
-![Figma design showing the main pages in our website](https://www.figma.com/file/WDZJ1m2kkhnJI0uXyiopy4/Untitled?node-id=0%3A1)
-
+[Figma design showing the main pages in our website](https://www.figma.com/file/WDZJ1m2kkhnJI0uXyiopy4/Untitled?node-id=0%3A1)
 
 - Front End : React
 
@@ -36,7 +35,7 @@ You can add your rating to movies - edit or remove it from the recommend movies 
 - You need to enter your email and password and you can register as a new user
 - You will view the main page which show the recommend movies
 - You can go to add a movie using the add movie page.
-- After search you should choose one of the list 
+- After search you should choose one of the list
 - You can edit the info - description and rating
 - Then You will redirected to the home page
 - You can make filter - search - change display at recommend movies

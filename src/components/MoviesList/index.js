@@ -1,15 +1,22 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function MoviesList(props) {
   const { movies, handleChooseMovie } = props;
+  const handleChooseMovieByKey = (id, e) => {
+    return handleChooseMovie(id, e);
+  };
   return (
-    <div>
+    <>
       <ul>
-        {movies.map((movie) => (
+        {movies ? movies.map((movie) => (
           <li
+            tabIndex="0"
+            role="button"
+            aria-label="select-movie"
             key={movie.id}
             className="AddMovie-movie-item"
             onClick={(e) => handleChooseMovie(movie.id, e)}
+            onKeyDown={(e) => handleChooseMovieByKey(movie.id, e)}
           >
             <p className="movie-original-title">{movie.original_title}</p>
             <img
@@ -21,14 +28,14 @@ function MoviesList(props) {
               {new Date(movie.release_date).getFullYear()}
             </span>
           </li>
-        ))}
+        )) : null}
       </ul>
-    </div>
+    </>
   );
 }
 
 MoviesList.propTypes = {
-  movies: PropTypes.array.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleChooseMovie: PropTypes.func.isRequired,
 };
 

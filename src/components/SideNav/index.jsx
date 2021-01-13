@@ -1,6 +1,6 @@
-import React from 'react';
-import LinkItem from '../LinkItem/index';
-import './style.css';
+import React from "react";
+import LinkItem from "../LinkItem/index";
+import "./style.css";
 
 export default function SidNav() {
   return (
@@ -10,14 +10,8 @@ export default function SidNav() {
           <LinkItem
             nameOfClass="item-link"
             withIcon={false}
-            text="Home"
-            to="home"
-          />
-          <LinkItem
-            nameOfClass="item-link"
-            withIcon={false}
             text="Recommended"
-            to="recommended"
+            to="movies"
           />
           <LinkItem
             nameOfClass="item-link"

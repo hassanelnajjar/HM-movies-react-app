@@ -1,69 +1,72 @@
-.signup-form-container{
+.signup-form-container {
   width: 60vw;
   height: 70vh;
   margin: 3rem auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items:center
+  align-items: center;
 }
 
-.add-user-header{
+.add-user-header {
   text-align: center;
   margin: 1rem 0;
 }
 
-.signup-form{
+.signup-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
-  border:1px solid gainsboro;
+  align-items: center;
+  border: 1px solid gainsboro;
   padding: 2rem;
   border-radius: 1rem;
   width: 100%;
-  gap:20px;
+  gap: 20px;
 }
 
-.add-movie-input-row{
+.add-movie-input-row {
   display: flex;
   flex-direction: row;
   width: 90%;
   justify-content: space-evenly;
-  align-items:center
+  align-items: center;
 }
 
-.add-movie-input-row label{
-  width:25%;
+.add-movie-input-row label {
+  width: 25%;
   text-align: right;
   white-space: nowrap;
-  
 }
 
-.add-movie-input-row label::after{
-  content:":"
+.add-movie-input-row label::after {
+  content: ":";
 }
 
-.add-movie-input-row input{
-  width:70%;
+.add-movie-input-row input {
+  padding: 0.5rem 1rem;
+  width: 70%;
   line-height: 1.5rem;
   outline: none;
-  border:1px solid rgb(211, 208, 208);
-  border-radius:0.20rem;
+  border: 1px solid rgb(211, 208, 208);
+  border-radius: 0.2rem;
 }
 
-
-.submit-signup-button{
-  border:none;
+.submit-signup-button {
+  border: none;
   padding: 0.5rem 2rem;
-  border-radius:0.3rem;
-  width:90%;
+  border-radius: 0.3rem;
+  width: 90%;
   position: relative;
   outline: none;
   transition: all 0.5s;
   cursor: pointer;
 }
 
-.submit-signup-button:hover{
-  background-color:gray
+.submit-signup-button:hover {
+  background-color: gray;
+}
+
+.signup-error {
+  color: red;
 }

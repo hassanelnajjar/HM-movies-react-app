@@ -1,13 +1,14 @@
-import AddMovie from './components/AddMovie';
-import Layout from './components/Layout';
-import './App.css';
+import { BrowserRouter as Router } from "react-router-dom";
+import Layout from "./components/Layout";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <Layout />
-      <AddMovie />
-    </div>
+    <Router>
+      <div className="App">
+        <Layout />
+      </div>
+    </Router>
   );
 }
 
