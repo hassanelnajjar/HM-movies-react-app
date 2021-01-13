@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { v4 as randomId } from 'uuid';
 import Options from "../Options";
 import MovieCard from "../MovieCard";
 
@@ -28,6 +29,7 @@ function MovieContainer(props) {
         .filter(({ watched }) => (showWatchedMovies ? watched : !watched))
         .map((movie) => (
           <MovieCard
+            key={randomId()}
             methods={{
               handleWatchedMovies,
               handleDeleteMovie,

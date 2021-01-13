@@ -14,11 +14,17 @@
   position: relative;
 }
 
+.Header-logo-text{
+  text-decoration: none;
+}
+
 .Header .Header-logo .Header-logo_text {
   color: crimson;
   font-size: 36px;
   letter-spacing: 5px;
   font-weight: bolder;
+  cursor: pointer;
+  user-select: none;
 }
 
 .userprofile-menu {

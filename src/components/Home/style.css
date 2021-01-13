@@ -1,0 +1,44 @@
+.home-container{
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.home-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center;
+  width: 50%;
+  margin-top: 5rem;
+}
+
+.home-login-button,.home-signup-button{
+  border:none;
+  outline: none;
+  border-radius: 0.5rem;
+  width: fit-content;
+  padding: 2rem;
+  background-color: rgb(223, 215, 215,0.5);
+}
+
+.home-button-link{
+  font-size: 18px;
+  padding: 2rem;
+  font-weight: 800;
+  
+}
+
+.home-login-button:hover,.home-signup-button:hover{
+  background-color: rgb(223, 215, 215);
+}
+
+.home-button-link{
+  text-decoration: none;
+  color:black;
+  font-weight: 500;
+}
