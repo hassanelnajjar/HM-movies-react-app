@@ -25,7 +25,7 @@ You can add your rating to movies - edit or remove it from the recommend movies 
 #### Work
 
 -Schema
-![Figma design showing the main pages in our website](https://www.figma.com/file/WDZJ1m2kkhnJI0uXyiopy4/Untitled?node-id=0%3A1)
+[Figma design showing the main pages in our website](https://www.figma.com/file/WDZJ1m2kkhnJI0uXyiopy4/Untitled?node-id=0%3A1)
 
 - Front End : React
 
