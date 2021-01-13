@@ -14,11 +14,17 @@
   position: relative;
 }
 
+.Header-logo-text{
+  text-decoration: none;
+}
+
 .Header .Header-logo .Header-logo_text {
   color: crimson;
   font-size: 36px;
   letter-spacing: 5px;
   font-weight: bolder;
+  cursor: pointer;
+  user-select: none;
 }
 
 .userprofile-menu {
@@ -81,18 +87,11 @@
   color: #df00ba;
 }
 
-
-.userprofile-menu .user-nav-list li button{
-  font-size: 18px;
-  text-align: left;
-  font-weight: 200;
-}
-.userprofile-menu .user-nav-list li button:hover {
+.userprofile-menu .user-nav-list li:hover:last-child {
   padding-right: 8px;
   color: #df0043;
 }
 
-.userprofile-menu .user-nav-list li button,
 .userprofile-menu .user-nav-list li a {
   text-decoration: none;
   color: #757575;

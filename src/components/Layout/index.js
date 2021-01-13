@@ -6,7 +6,8 @@ import {
   saveMovies,
   removeMovie,
   watchedMovies,
-  unRegisterUser,
+	unRegisterUser,
+	isAuthUser
 } from "../../utils/localStorage";
 import Header from "../Headers";
 import About from "../About";
@@ -39,11 +40,11 @@ class Layout extends Component {
 	}
 
 	componentDidMount() {
-		this.setState({ movies: getMovies() });
+		this.setState({ movies: getMovies(), isAuthenticated: isAuthUser() });
 	}
 
 	handleAuthentication() {
-		this.setState({ isAuthenticated: true });
+		this.setState({ isAuthenticated: isAuthUser() });
 	}
 
 	handleDeleteMovie(movieId) {
@@ -73,7 +74,7 @@ class Layout extends Component {
 	handleLogout() {
 		const {history:{push}} = this.props
 		unRegisterUser();
-		this.setState({ isAuthenticated: false });
+		this.setState({ isAuthenticated: isAuthUser() });
 		return push('/');
 	}
 
@@ -120,24 +121,24 @@ class Layout extends Component {
 		const { show, movies, isAuthenticated } = this.state;
 		return (
   <div className='Layout'>
-    <Header handleLogout={this.handleLogout} />
+    <Header />
     <div className='main-content'>
       <SideNav />
       <Switch>
-        <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/contact' component={Contact} />
         <Route
           exact
           path='/logout'
-          render={(props) => <Logout handleLogout={this.handleLogout} {...props} />}
+          render={(props) => (
+            <Logout handleLogout={this.handleLogout} {...props} />
+							)}
         />
         <Route
           exact
           path='/login'
           render={(props) => (
             <Login
-              isAuthenticated={isAuthenticated}
               handleAuthentication={this.handleAuthentication}
               {...props}
             />
@@ -148,9 +149,8 @@ class Layout extends Component {
           path='/signup'
           render={(props) => (
             <SignUp
-              isAuthenticated={isAuthenticated}
-              {...props}
               handleAuthentication={this.handleAuthentication}
+              {...props}
             />
 							)}
         />
@@ -160,14 +160,17 @@ class Layout extends Component {
 									route: '/movies',
 									showWatchedMovies: false,
 									styleType: 'style2',
+									id: 1,
 								},
 								{
 									route: '/watched',
 									showWatchedMovies: true,
 									styleType: 'style1',
+									id: 2,
 								},
 							].map((el) => (
   <Route
+    key={el.id}
     exact
     path={el.route}
     render={(props) => {
@@ -189,7 +192,14 @@ class Layout extends Component {
 									}}
   />
 							))}
-        <Redirect to='/movies' />
+
+        {isAuthenticated ? (
+          <Redirect to='/movies' />
+						) : (
+  <Route exact path='/' component={Home} />
+						)}
+        <Redirect to='/' />
+
       </Switch>
     </div>
     <div>{show}</div>

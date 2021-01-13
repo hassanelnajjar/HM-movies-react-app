@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom'
 import LinkItem from "../LinkItem/index";
 import Backdrop from "../Backdrop/index";
+import {isAuthUser,getUserName} from '../../utils/localStorage'
 import "./style.css";
 
 class Headers extends Component {
@@ -28,14 +29,18 @@ class Headers extends Component {
 
   render() {
     const { open } = this.state;
+    const isAuthenticated = isAuthUser();
     return (
       <>
         <div className='Header'>
           {open && <Backdrop onClick={this.handleClick} />}
           <div className='Header-logo'>
-            <h1 className='Header-logo_text'>HM</h1>
+            <Link to='/' className='Header-logo-text'>
+              <h1 className='Header-logo_text'>HM</h1>
+            </Link>
           </div>
           <div className='Header-userprofile'>
+            {isAuthenticated && (
             <div
               className='menu-btn'
               onClick={this.handleClick}
@@ -43,11 +48,13 @@ class Headers extends Component {
               tabIndex={0}
               onKeyDown={this.handleKeyDown}
             >
-              <span className='username-text'>username</span>
+              <span className='username-text'>{getUserName()}</span>
               <img src='' alt='' />
               <i className='fas fa-user' />
               <i className='fas fa-angle-down' />
             </div>
+						)}
+
             {open ? (
               <div className={`userprofile-menu ${open && 'fadeIn'}`}>
                 <ul className='user-nav-list'>
@@ -81,6 +88,7 @@ class Headers extends Component {
 		);
   }
 }
+
 
 
 export default Headers;

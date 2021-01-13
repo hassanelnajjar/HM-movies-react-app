@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link,Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import { isAuthUser } from '../../utils/localStorage';
+import { isAuthUser, registerUser } from '../../utils/localStorage';
 
 import "./style.css";
 
@@ -12,7 +12,7 @@ class Login extends Component {
 			email: '',
 			password: '',
 			showPassword: false,
-			errors: false,
+			errors: '',
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handlePassword = this.handlePassword.bind(this);
@@ -23,23 +23,30 @@ class Login extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
 		const {
-			history: { push },
-			handleAuthentication,
+      history: { push },
+      handleAuthentication,
 		} = this.props;
 		const {
 			target: [{ value: email }, { value: password }],
 		} = event;
 		const savedUsers = JSON.parse(localStorage.getItem('users'));
+
+		if (savedUsers === null){
+			return this.setState({errors:'Please register Your email and Password ...  '})
+		}
+
 		const isAuth = savedUsers.find(
 			(user) => user.email === email && user.password === password
 		);
+
 		if (isAuth) {
-			this.setState({ errors: false });
-			handleAuthentication();
+			this.setState({ errors: '' });
+      registerUser(isAuth.username);
+      handleAuthentication();
 			return push('/movies');
 		}
 
-		return this.setState({ errors: true });
+		return this.setState({ errors: 'Please check you Email and Password ... ' });
 	}
 
 	handleEmail(event) {
@@ -105,7 +112,7 @@ class Login extends Component {
         <Link to='/signup'>Register Here !!</Link>
       </p>
       {errors ? (
-        <p className='login-error'>Incorrect User name or password !!</p>
+        <p className='login-error'>{errors}</p>
 					) : null}
       <input
         className='submit-login-button'
@@ -118,25 +125,23 @@ class Login extends Component {
 	}
 }
 Login.propTypes = {
-  handleAuthentication:PropTypes.func.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }).isRequired,
-}
+	history: PropTypes.shape({
+		push: PropTypes.func.isRequired,
+	}).isRequired,
+	handleAuthentication: PropTypes.func.isRequired,
+};
 
 function HighOrderLogin(props) {
   const isAuth = isAuthUser();
-  const { isAuthenticated } = props;
-  console.log({ isAuth, isAuthenticated });
-
-	if (!isAuth && !isAuthenticated) {
+	if (!isAuth) {
 		return <Login {...props} />;
 	}
 	return <Redirect to='/movies' />;
 }
 
 HighOrderLogin.propTypes = {
-	isAuthenticated:PropTypes.bool.isRequired
+	isAuthenticated: PropTypes.bool.isRequired,
+	handleAuthentication:PropTypes.func.isRequired
 };
 
 export default HighOrderLogin;
