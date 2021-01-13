@@ -20,8 +20,8 @@
   "rules": {
     "react/state-in-constructor": 0,
     "react/jsx-props-no-spreading": 0,
-		"jsx-a11y/label-has-associated-control": "off",
-		"jsx-a11y/no-noninteractive-element-to-interactive-role":"off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/no-noninteractive-element-to-interactive-role": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [
       1,

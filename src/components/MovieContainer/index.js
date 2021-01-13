@@ -6,6 +6,7 @@ export default function MovieContainer(props) {
     methods: { handleWatchedMovies, handleSubmit, handleDeleteMovie },
     showWatchedMovies,
     movies,
+    styleType,
   } = props;
   return (
     <div className="MovieContainer">
@@ -19,7 +20,7 @@ export default function MovieContainer(props) {
               handleDeleteMovie,
             }}
             movie={movie}
-            styleType="style2"
+            styleType={styleType}
             {...props}
           />
         ))}

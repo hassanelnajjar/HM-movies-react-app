@@ -13,13 +13,14 @@
 }
 
 .MovieCard .card-header {
+  overflow: hidden;
+  border: 5px solid black;
   width: 100%;
-  height: auto;
+  height: 60%;
 }
 
 .MovieCard .card-header img {
-  max-height: 100%;
-  width: 100%;
+  max-width: 100%;
 }
 
 .MovieCard .card-main-content {
@@ -29,6 +30,8 @@
   flex-direction: column;
   padding: 10px;
   text-align: center;
+  height: 40%;
+  overflow: auto;
 }
 
 .MovieCard .card-main-content .card-main-content__title h2 {
@@ -50,7 +53,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  height: 15%;
+  height: 10%;
   color: #f5f5f5;
   border: 1px solid rgb(225, 2, 99);
   background-color: rgb(225, 2, 99);
@@ -120,9 +123,9 @@
   z-index: -5;
 }
 
-.check-button{
-  border:none;
-  background-color:transparent;
+.check-button {
+  border: none;
+  background-color: transparent;
   cursor: pointer;
 }
 
